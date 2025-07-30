@@ -9,10 +9,14 @@ import CustomOverlay from './CustomOverlay';
 
 function DataDisplay() {
     const [dataArray, setDataArray] = useState<dataObjType[]>([]);
+    // variables for a paginator
     const [first, setFirst] = useState<number>(0);
     const [curPage, setCurPage] = useState<number>(1);
+    //it is the datastructure that stores the index of selected row in overall data
     const [selectedRowsSet, setSelectedRowsSet] = useState<Set<number>>(() => new Set());
+    // it is an array that stores the selected rows for currentpage
     const [selectedRows, setSelectedRows] = useState<dataObjType[]>([]);
+    // this is used by the overlay to select specified number of rows at once 
     const [rowsToSelect,SetRowsToSelect] = useState<number>(0);
     async function fetchData() {
         const data = await getData(curPage);
@@ -32,23 +36,26 @@ function DataDisplay() {
     }
 const handleSelection = (e: any) => {
   const newSelected: dataObjType[] = e.value || [];
-  const prevSelected = selectedRows || [];
 
-  const newIndexes = new Set(newSelected.map((row) => row.index));
-  const prevIndexes = new Set(prevSelected.map((row) => row.index));
+  const newSet = new Set<number>(selectedRowsSet);
 
-  const addedIndexes = [...newIndexes].filter((i) => !prevIndexes.has(i));
-  const removedIndexes = [...prevIndexes].filter((i) => !newIndexes.has(i));
+  // update selection for both current page rows and overall rowset 
+  
+ const selectedIndexes = new Set(newSelected.map(item => item.index));
 
-  setSelectedRowsSet((prev) => {
-    const updated = new Set(prev);
-    addedIndexes.forEach((i) => updated.add(i));
-    removedIndexes.forEach((i) => updated.delete(i));
-    return updated;
-  });
+  for (let data of dataArray) {
+    if (selectedIndexes.has(data.index)) {
+      newSet.add(data.index);
+    } else {
+      newSet.delete(data.index);
+    }
+  }
+  
 
+  setSelectedRowsSet(newSet);
   setSelectedRows(newSelected);
 };
+
 
 
     useEffect(() => {
