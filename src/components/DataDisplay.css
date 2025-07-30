@@ -1,0 +1,100 @@
+.data-display-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.data-table-wrapper {
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Table headers */
+.p-datatable-thead th {
+  background-color: #12a426;
+  color: white;
+  padding: 10px;
+}
+
+/* Table */
+.p-datatable-tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.p-datatable-tbody td {
+    max-height: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Column */
+.p-checkbox-box{
+  display:none !important;
+}
+.title-column {
+  font-weight: bold;
+}
+
+.artist-column {
+  font-style: italic;
+  color: #666;
+}
+
+.date-column {
+  color: green;
+}
+
+.inscriptions-column {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+}
+
+.origin-column {
+  color: red;
+}
+
+/* Paginator */
+.paginator-wrapper {
+  text-align: center;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.p-paginator-first,
+.p-paginator-prev,
+.p-paginator-next,
+.p-paginator-last {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 3px;
+}
+
+.p-paginator-first:hover,
+.p-paginator-prev:hover,
+.p-paginator-next:hover,
+.p-paginator-last:hover {
+  background-color: darkblue;
+}
+
+.p-paginator-page {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 3px;
+}
+
+.p-paginator-page:hover {
+  background-color: #ddd;
+}
+
+.p-paginator-page.p-highlight {
+  background-color: blue;
+  color: white;
+}
